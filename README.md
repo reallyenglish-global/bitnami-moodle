@@ -15,7 +15,7 @@ docker buildx build \
   --load .
 ```
 
-For an ARM64 image, use `--platform linux/arm64`. To publish a multi-platform manifest, authenticate to the chosen registry and use `--platform linux/amd64,linux/arm64 --push` instead of `--load`. This repository does not publish images automatically; the GHCR image referenced by the chart is not available until an authorized build-and-publish is performed. The Dockerfile's default Bitnami download endpoint is public; no download token is required.
+For an ARM64 image, use `--platform linux/arm64`. To publish a multi-platform manifest, authenticate to the chosen registry and use `--platform linux/amd64,linux/arm64 --push` instead of `--load`. This repository does not publish images automatically; no image build or publication was performed as part of this task, so verify that the referenced GHCR tag exists and is pullable before use. The Dockerfile's default Bitnami download endpoint is public; no download token is required.
 
 ## Helm chart
 
@@ -41,4 +41,4 @@ The chart defaults `MOODLE_DATA_TO_PERSIST=config.php`: Moodle code comes from t
 
 ## Current verification boundary
 
-The repository was assembled from pinned Bitnami source trees. The initial Docker image has not been built or published, so the GHCR image reference is a planned location, not a currently pullable artifact. Run the build and Helm checks above before relying on it; no production configuration or workload is changed by this repository.
+The repository was assembled from pinned Bitnami source trees. The initial Docker image has not been built or published by this task, so pullability of the chart's GHCR image reference is unverified. Run the build and Helm checks above before relying on it; no production configuration or workload is changed by this repository.
